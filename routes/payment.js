@@ -33,8 +33,8 @@ router.post('/payment_gateway/payumoney', isLoggedIn , (req, res) => {
      //We have to additionally pass merchant key to API
     
      pay.key = process.env.MERCHANT_KEY //store in in different file;
-     pay.surl = 'http://localhost:3000/payment/success';
-     pay.furl = 'http://localhost:3000/payment/fail';
+     pay.surl = 'https://shop-now24.herokuapp.com/payment/success';
+     pay.furl = 'https://shop-now24.herokuapp.com/payment/fail';
      pay.hash = hash;
     //Making an HTTP/HTTPS call with request
     request.post({
