@@ -20,7 +20,7 @@
                   <h5 class="card-title"> Seller: <%=product.seller.username%></h5>
                   
                   <%if(!currentUser || currentUser.info=='user'){%>
-                    <a href="/user/<%=currentUser._id%>/cart" class="btn btn-success">Buy</a>
+                    <a href="/user/<%=product._id%>/cart" class="btn btn-success">Buy</a>
                     <form action="/user/<%=product._id%>/cart" method="POST" style="display: inline;">
                       <div class="card-body" style="display: inline;">
                         <button class="btn btn-outline-success">ADD TO CART</button>
