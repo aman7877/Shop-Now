@@ -1,0 +1,51 @@
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #00b4d8;">
+    <div class="container-fluid">
+      <!-- <a class="navbar-brand" href="/products"><i class="fas fa-shopping-basket" style="margin-right: 10px;font-size: 1.7rem;"></i>Shopping Cart</a> -->
+
+      <a class="navbar-brand" href="/products"><img src="https://icon-library.com/images/shop-now-icon/shop-now-icon-8.jpg" style="width: 130px; border-radius: 10px;" alt="On-Line Shop"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/products">Products</a>
+          </li>
+          
+          <li class="nav-item"> 
+            <% if(!currentUser){ %> 
+            <a class="nav-link disabled" href="/products/new" tabindex="-1" aria-disabled="true">New</a>
+            <%}else if(currentUser.info=='seller'){%>
+              <a class="nav-link active" href="/products/new" tabindex="-1" aria-disabled="true">New</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/<%=currentUser._id%>/myproducts " tabindex="-1" aria-disabled="true">My Products</a>
+            </li>
+              
+              <%}%>
+          </li>
+          
+        </ul>
+        
+        <div class="navbar-nav ml-auto"> 
+          <% if(!currentUser){ %> 
+              <a href="/loginregister" class="nav-link active">LogIn / Register</a>
+          <%}else if(currentUser.info=='user'){%>
+              <a href="/profile/user/<%=currentUser._id%>" class="nav-link active">Hello <%=currentUser.firstname%></a>
+              <a href="/user/<%=currentUser._id%>/me" class="nav-link active">My Orders</a>
+              <a href="/user/<%=currentUser._id%>/cart" class="nav-link active"><i class="fas fa-shopping-cart"></i><sup><span class="badge bg-danger"><%=currentUser.firstname%></span></sup> </a>
+              <a href="/logout" class="nav-link active">Logout</a>
+          <%}else if(currentUser.info=='seller'){%>
+            
+              <a href="/profile/seller/<%=currentUser._id%>" class="nav-link active"> <em>Hi Seller</em>  <%=currentUser.firstname%></a>
+              <a href="/logoutseller" class="nav-link active">Logout</a>
+          <%}%>
+        </div>
+      </div>
+    </div>
+  </nav>
